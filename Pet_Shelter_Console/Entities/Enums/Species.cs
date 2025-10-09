@@ -2,6 +2,7 @@
 {
     enum Species
     {
+        NONE = 0,
         DOG,
         CAT,
         HORSE,
