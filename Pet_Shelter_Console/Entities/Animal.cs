@@ -6,5 +6,6 @@
         private int age;
         private double height;
         private double width;
+        private char sex;
     }
 }
