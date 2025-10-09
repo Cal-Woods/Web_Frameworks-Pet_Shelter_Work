@@ -33,5 +33,34 @@
             get { return sex; }
             set { sex = value; }
         }
+
+        /// <summary>
+        /// A no parameter constructor.
+        /// </summary>
+        /// <remarks>In Sex field, 'U' stands for Unknown</remarks>
+        public Animal()
+        {
+            Name = "Dummy";
+            Age = -1;
+            Height = -1;
+            Width = -1;
+            Sex = 'U';
+        }
+        /// <summary>
+        /// A parameterised constructor to set each Animal attribute to given values.
+        /// </summary>
+        /// <param name="name">Given name</param>
+        /// <param name="age">Given age</param>
+        /// <param name="height">Given height</param>
+        /// <param name="width">Given width</param>
+        /// <param name="sex">Given sex {'m','f'}</param>
+        public Animal(string name, int age, double height, double width, char sex)
+        {
+            Name = name;
+            Age = age;
+            Height = height;
+            Width = width;
+            Sex = sex;
+        }
     }
 }
