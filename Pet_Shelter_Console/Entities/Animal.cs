@@ -62,5 +62,9 @@
             Width = width;
             Sex = sex;
         }
+
+        public override string ToString() {
+            return $"Name: {Name}\nAge: {Age}\nWidth: {Width}\nHeight: {Height}\nSex: {Sex}";
+        }
     }
 }
