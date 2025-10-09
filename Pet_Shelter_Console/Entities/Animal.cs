@@ -1,4 +1,6 @@
-﻿namespace Entities
+﻿using Entities.Enums;
+
+namespace Entities
 {
     public abstract class Animal
     {
@@ -7,6 +9,7 @@
         private double height;
         private double width;
         private char sex;
+        private Species species;
 
         public string Name
         {
@@ -32,6 +35,12 @@
         {
             get { return sex; }
             set { sex = value; }
+        }
+        public string Species
+        {
+            get { return species.ToString(); }
+
+            set { species = Enum.Parse<Species>(value); }
         }
 
         /// <summary>
