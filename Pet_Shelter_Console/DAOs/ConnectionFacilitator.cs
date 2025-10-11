@@ -1,11 +1,12 @@
 ﻿using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DAOs
 {
     public class ConnectionFacilitator
     {
-        MySqlConnection connection;
+        MySqlConnection? connection;
         public ConnectionFacilitator(MySqlConnection conn)
         {
             if (conn == null)
