@@ -39,8 +39,7 @@ namespace Entities
         public string Species
         {
             get { return species.ToString(); }
-
-            set { species = Enum.Parse<Species>(value); }
+            set { species = Enum.Parse<Species>(value); }//TODO: Change to lambda expression that checks value matches Species Enums.
         }
 
         /// <summary>
@@ -54,6 +53,7 @@ namespace Entities
             Height = -1;
             Width = -1;
             Sex = 'U';
+            Species = "Dog".ToUpper();
         }
         /// <summary>
         /// A parameterised constructor to set each Animal attribute to given values.
@@ -63,13 +63,14 @@ namespace Entities
         /// <param name="height">Given height</param>
         /// <param name="width">Given width</param>
         /// <param name="sex">Given sex {'m','f'}</param>
-        public Animal(string name, int age, double height, double width, char sex)
+        public Animal(string name, int age, double height, double width, char sex, string species)
         {
             Name = name;
             Age = age;
             Height = height;
             Width = width;
             Sex = sex;
+            Species = species.ToUpper();
         }
 
         public override string ToString() {
