@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `web-frameworks_CA1-db`;
-USE `web-frameworks_CA1-db`;
+CREATE DATABASE IF NOT EXISTS `Pet_Shelter`;
+USE `Pet_Shelter`;
 
 CREATE TABLE IF NOT EXISTS `employees`(
   EmployeeId INT(20) PRIMARY KEY,
