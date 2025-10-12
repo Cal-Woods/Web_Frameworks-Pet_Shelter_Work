@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `employees`(
   name VARCHAR(255),
   salary DECIMAL(8,2),
   employeeType VARCHAR(255),
-  ;ocation VARCHAR(255)
+  location VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS `animals`(
