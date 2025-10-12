@@ -6,22 +6,15 @@ namespace DAOs
 {
     public class ConnectionFacilitator
     {
-        MySqlConnection? connection;
-        public ConnectionFacilitator(MySqlConnection conn)
-        {
-            if (conn == null)
-            {
-                throw new ArgumentNullException("MySql connection object was null, must be initialised!");
-            }
-            if (conn.ConnectionString == null)
-            {
-                throw new ArgumentNullException("MySql connection object connection string was not set, set connection string in format: 'server=url;uid=username;pwd=password;database=dbName'");
-            }
+        private const string DETAILS = "server=localhost;uid=root;pwd=;database=Pet_Shelter";
 
+        MySqlConnection connection;
+        public ConnectionFacilitator()
+        {
             //Try to assign connection
             try
             {
-                connection = conn;
+                connection = new MySqlConnection(DETAILS);
                 connection.Open();
             }
             catch (MySqlException e)
