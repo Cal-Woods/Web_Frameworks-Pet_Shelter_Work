@@ -2,11 +2,11 @@ CREATE DATABASE IF NOT EXISTS `Pet_Shelter`;
 USE `Pet_Shelter`;
 
 CREATE TABLE IF NOT EXISTS `employees`(
-  EmployeeId INT(20) PRIMARY KEY,
-  Name VARCHAR(255),
-  Salary DECIMAL(8,2),
+  employeeId INT(20) PRIMARY KEY,
+  name VARCHAR(255),
+  salary DECIMAL(8,2),
   employeeType VARCHAR(255),
-  location VARCHAR(255)
+  ;ocation VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS `animals`(
@@ -21,4 +21,4 @@ CREATE TABLE IF NOT EXISTS `animals`(
 
 /*INSERT commands
   employees*/
-INSERT INTO `employees` (`EmployeeId`, `Name`, `Salary`, `salaryType`, `location`) VALUES ('20', 'Cal Derek John Farrell Woods', '5000.50', 'Manager', 'Here');
+INSERT INTO `employees` (`employeeId`, `name`, `salary`, `employeeType`, `location`) VALUES ('20', 'Cal Derek John Farrell Woods', '5000.50', 'Manager', 'Here');
