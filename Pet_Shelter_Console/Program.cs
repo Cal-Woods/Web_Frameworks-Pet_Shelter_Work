@@ -87,6 +87,8 @@ public class Program
             {
                 Console.WriteLine("Done.");
             }
+
+            Console.ReadLine();//Clear buffer
         }
 
         return managers;
