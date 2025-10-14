@@ -7,7 +7,7 @@ using System.Data;
 
 public class Program
 {
-    private static List<Manager> list;
+    static List<Manager> managers = new List<Manager>();
     public static void Main(string[] args)
     {
         Console.WriteLine("This is an application for a pet shelter management system! This system will allow managers to enter new animal records into system\nFor vets to be able to view these records.\nFosterers will be able to view animals that need a home and filter search results.");
@@ -19,8 +19,6 @@ public class Program
 
         ManagersDAO dao = new ManagersDAO(new ConnectionFacilitator());
 
-        list = StoreManagers(dao);
-
         while (isRunning)
         {
             Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Add Employee to database\n4)Add Animal to database\nType 'exit' to exit program");
@@ -30,6 +28,16 @@ public class Program
             {
                 case "1":
                     //TODO:Call method for corresponding action
+                    managers = StoreManagers(dao);//Fetch & store managers records in list
+
+                    if (managers.Count == 0)
+                    {
+                        Console.WriteLine("No managers available!");
+                    }
+                    else 
+                    {
+                        managers.ForEach(m => Console.WriteLine(m));//ForEach(Action<Manager> action) to print each manager to console
+                    }
                     break;
 
                 case "2":
@@ -48,6 +56,7 @@ public class Program
                     isRunning = false; //End loop to exit program
                     break;
                 default: //All other cases
+                    Console.WriteLine("Invalid option! Please read options.");
                     break; //While loop will just restart
             }
         }
@@ -62,17 +71,17 @@ public class Program
             throw new ArgumentNullException("Given ManagersDAO object was null, please check passed parameter.");
         }
 
-        if (list.Count == 0)
+        if (managers.Count == 0)
         {
             Console.WriteLine("The list of Managers is empty, fetching all manager records from database...");
-            list = managersDb.GetAllManagers();
+            managers = managersDb.GetAllManagers();
         }
         else
         {
             Console.Write("list is already populated.\nWould you like to fetch from database anyway?(y/n) ");
             if (Console.Read().Equals("y"))
             {
-                list = managersDb.GetAllManagers();
+                managers = managersDb.GetAllManagers();
             }
             else
             {
@@ -80,6 +89,6 @@ public class Program
             }
         }
 
-        return list;
+        return managers;
     }
 }
