@@ -36,7 +36,7 @@ public class Program
                     }
                     else 
                     {
-                        managers.ForEach(m => Console.WriteLine(m));//ForEach(Action<Manager> action) to print each manager to console
+                        managers.ForEach(m => Console.WriteLine(m));//ForEach(Action<Manager> action) method iterates over the managers list & performs another method for each one
                     }
                     break;
 
@@ -74,6 +74,13 @@ public class Program
         if (managers.Count == 0)
         {
             Console.WriteLine("The list of Managers is empty, fetching all manager records from database...");
+            if(managersDb.connectionFacilitator.Connection.State == ConnectionState.Closed) 
+            {
+                Console.WriteLine("Connection to DB is down so unable to fetch list of managers.");
+
+                return new List<Manager>();
+            }
+
             managers = managersDb.GetAllManagers();
         }
         else
