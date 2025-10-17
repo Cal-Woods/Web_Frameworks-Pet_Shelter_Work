@@ -2,7 +2,7 @@
 
 using Entities;
 using MySql.Data.MySqlClient;
-using System.Collections;
+using System.Data;
 
 namespace DAOs
 {
@@ -21,12 +21,15 @@ namespace DAOs
 
         public List<Manager> GetAllManagers()
         {
+            if(connectionFacilitator.Connection.State == ConnectionState.Closed) 
+            {
+                return null;
+            }
             List<Manager> managerList = new List<Manager>();
 
             try
             {
                 MySqlCommand comm = new MySqlCommand("SELECT * FROM employees", connectionFacilitator.Connection);
-
                 try
                 {
 
