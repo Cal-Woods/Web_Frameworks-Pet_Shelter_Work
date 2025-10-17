@@ -8,7 +8,7 @@ namespace DAOs
 {
     public class ManagersDAO
     {
-        private ConnectionFacilitator connectionFacilitator;
+        public ConnectionFacilitator connectionFacilitator {  get; private set; }
         public ManagersDAO(ConnectionFacilitator conn) 
         {
             if (conn == null) 
