@@ -28,7 +28,7 @@ public class Program
             {
                 case "1":
                     //TODO:Call method for corresponding action
-                    managers = StoreManagers(dao);//Fetch & store managers records in list
+                    managers = GetStoreManagers(dao);//Fetch & store managers records in list
 
                     if (managers.Count == 0)
                     {
@@ -64,7 +64,7 @@ public class Program
         return;
     }
 
-    private static List<Manager> StoreManagers(ManagersDAO managersDb)
+    private static List<Manager> GetStoreManagers(ManagersDAO managersDb)
     {
         if (managersDb == null)
         {
