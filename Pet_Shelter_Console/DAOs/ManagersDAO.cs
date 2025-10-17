@@ -1,6 +1,4 @@
-﻿
-
-using Entities;
+﻿using Entities;
 using MySql.Data.MySqlClient;
 using System.Data;
 
@@ -54,6 +52,45 @@ namespace DAOs
             }
 
             return managerList;
+        }
+
+        public Manager getManagerById(string id)
+        {
+            //Validation
+            ArgumentNullException.ThrowIfNull(id, id);
+            if (connectionFacilitator.Connection.State != ConnectionState.Open)
+            {
+                return new Manager();
+            }
+
+            Manager manager = null;
+
+            try
+            {
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM employees WHERE employeeId = @id");
+                comm.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    MySqlDataReader data = comm.ExecuteReader();
+
+                    if (data.Read())
+                    {
+                        manager = new Manager(data[0].ToString(), data[1].ToString(), Double.Parse(data[2].ToString()), data[3].ToString(), data[4].ToString());
+                    }
+                    data.Close();
+                }
+                catch (MySqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            catch (MySqlException ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return manager;
         }
     }
 }
