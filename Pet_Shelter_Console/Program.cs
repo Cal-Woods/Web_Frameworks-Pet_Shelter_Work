@@ -27,7 +27,6 @@ public class Program
             switch (menuChoice.ToLower())
             {
                 case "1":
-                    //TODO:Call method for corresponding action
                     managers = GetStoreManagers(dao);//Fetch & store managers records in list
 
                     if (managers.Count == 0)
