@@ -22,3 +22,6 @@ CREATE TABLE IF NOT EXISTS `animals`(
 /*INSERT commands
   employees*/
 INSERT INTO `employees` (`employeeId`, `name`, `salary`, `employeeType`, `location`) VALUES ('20', 'Cal Derek John Farrell Woods', '5000.50', 'Manager', 'Here');
+
+/*INSERT commands animals*/
+INSERT INTO `animals` (`animalId`,`name`,`age`,`height`,`width`,`sex`,`species`) VALUES ("MaxD0g", "Max", 4, 3.45, 2.00, 'M', "Dog");``,
