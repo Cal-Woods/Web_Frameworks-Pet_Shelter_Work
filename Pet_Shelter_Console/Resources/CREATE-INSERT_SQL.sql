@@ -25,3 +25,5 @@ INSERT INTO `employees` (`employeeId`, `name`, `salary`, `employeeType`, `locati
 
 /*INSERT commands animals*/
 INSERT INTO `animals` (`animalId`,`name`,`age`,`height`,`width`,`sex`,`species`) VALUES ("MaxD0g", "Max", 4, 3.45, 2.00, 'M', "Dog");``,
+INSERT INTO `animals` (`animalId`, `name`, `age`, `height`, `width`, `sex`, `species`) VALUES ('AParr0t', 'Crackers', '2', '4.1', '3.8', 'F', 'Parrot');
+INSERT INTO `animals` (`animalId`, `name`, `age`, `height`, `width`, `sex`, `species`) VALUES ('BadSpecies_Test', 'Bonza', '8', '23', '35', 'U', 'Parogee');
