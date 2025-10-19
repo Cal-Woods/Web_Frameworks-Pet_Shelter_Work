@@ -2,7 +2,7 @@
 
 namespace Entities
 {
-    public abstract class Animal
+    public class Animal
     {
         private string name;
         private int age;
