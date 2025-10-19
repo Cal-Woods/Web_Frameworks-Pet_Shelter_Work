@@ -4,9 +4,9 @@ using System.Data;
 
 namespace DAOs
 {
-    public class ManagersDAO
+    public class ManagersDAO : IDAO
     {
-        public ConnectionFacilitator connectionFacilitator {  get; private set; }
+        public ConnectionFacilitator connection {  get; private set; }
         public ManagersDAO(ConnectionFacilitator conn) 
         {
             if (conn == null) 
@@ -14,12 +14,12 @@ namespace DAOs
                 throw new ArgumentNullException("Given ConnectionFacilitator object was null! Please provide a valid ConnectionFacilitator!");
             }
 
-            this.connectionFacilitator = conn;
+            this.connection = conn;
         }
 
         public List<Manager> GetAllManagers()
         {
-            if(connectionFacilitator.Connection.State == ConnectionState.Closed) 
+            if(connection.Connection.State == ConnectionState.Closed) 
             {
                 return null;
             }
@@ -27,7 +27,7 @@ namespace DAOs
 
             try
             {
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM employees", connectionFacilitator.Connection);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM employees", connection.Connection);
                 try
                 {
 
@@ -58,7 +58,7 @@ namespace DAOs
         {
             //Validation
             ArgumentNullException.ThrowIfNull(id, id);
-            if (connectionFacilitator.Connection.State != ConnectionState.Open)
+            if (connection.Connection.State != ConnectionState.Open)
             {
                 return new Manager();
             }
