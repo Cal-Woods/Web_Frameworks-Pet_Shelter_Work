@@ -10,6 +10,7 @@
         PARROT,
         PIG,
         PONY,
-        DONKEY
+        DONKEY,
+        PAROGEE
     }
 }
