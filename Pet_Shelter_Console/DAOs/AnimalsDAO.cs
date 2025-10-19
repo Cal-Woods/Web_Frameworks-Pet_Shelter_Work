@@ -1,6 +1,6 @@
 ﻿namespace DAOs
 {
-    public class AnimalsDAO
+    public class AnimalsDAO : IDAO
     {
         public ConnectionFacilitator connection { get; private set; }
         public AnimalsDAO(ConnectionFacilitator connectionFacilitator) 
