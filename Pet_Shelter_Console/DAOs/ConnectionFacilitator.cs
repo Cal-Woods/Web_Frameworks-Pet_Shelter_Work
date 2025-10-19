@@ -28,5 +28,25 @@ namespace DAOs
             get { return connection; }
             private set { connection = value; }
         }
+
+        public bool CloseConnection() 
+        {
+            if (connection.State == System.Data.ConnectionState.Closed) 
+            {
+                return false;
+            }
+
+            try
+            {
+                connection.Close();
+            }
+            catch (MySqlException e)
+            {
+                Console.WriteLine("Could not close connection!\n" + e.Message);
+                return false;
+            }
+
+            return true;
+        }
     }
 }
