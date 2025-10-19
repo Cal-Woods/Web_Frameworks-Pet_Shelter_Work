@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS `Pet_Shelter`;
 USE `Pet_Shelter`;
 
 CREATE TABLE IF NOT EXISTS `employees`(
-  employeeId INT(20) PRIMARY KEY,
+  employeeId VARCHAR(255) PRIMARY KEY,
   name VARCHAR(255),
   salary DECIMAL(8,2),
   employeeType VARCHAR(255),
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `employees`(
 );
 
 CREATE TABLE IF NOT EXISTS `animals`(
-  animalId INT(20) PRIMARY KEY,
+  animalId VARCHAR(255) PRIMARY KEY,
   name VARCHAR(255),
   age INT(20),
   height DECIMAL(4,2),
