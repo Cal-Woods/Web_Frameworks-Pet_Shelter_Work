@@ -4,6 +4,7 @@ namespace Entities
 {
     public class Animal
     {
+        private string animalId;
         private string name;
         private int age;
         private double height;
@@ -11,6 +12,11 @@ namespace Entities
         private char sex;
         private Species species;
 
+        public string AnimalId
+        {
+            get { return animalId; }
+            private set { animalId = value; }
+        }
         public string Name
         {
             get { return name; }
@@ -63,8 +69,9 @@ namespace Entities
         /// <param name="height">Given height</param>
         /// <param name="width">Given width</param>
         /// <param name="sex">Given sex {'m','f'}</param>
-        public Animal(string name, int age, double height, double width, char sex, string species)
+        public Animal(string animalId, string name, int age, double height, double width, char sex, string species)
         {
+            AnimalId = animalId;
             Name = name;
             Age = age;
             Height = height;
@@ -74,7 +81,7 @@ namespace Entities
         }
 
         public override string ToString() {
-            return $"Name: {Name}\nAge: {Age}\nWidth: {Width}\nHeight: {Height}\nSex: {Sex}";
+            return $"Animal id: {AnimalId}\nName: {Name}\nAge: {Age}\nWidth: {Width}\nHeight: {Height}\nSex: {Sex}";
         }
     }
 }
