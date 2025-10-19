@@ -73,7 +73,7 @@ public class Program
         if (managers.Count == 0)
         {
             Console.WriteLine("The list of Managers is empty, fetching all manager records from database...");
-            if(managersDb.connectionFacilitator.Connection.State == ConnectionState.Closed) 
+            if(managersDb.connection.Connection.State == ConnectionState.Closed) 
             {
                 Console.WriteLine("Connection to DB is down so unable to fetch list of managers.");
 
