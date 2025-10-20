@@ -17,8 +17,6 @@ public class Program
 
         const string SENTINEL = "exit";
 
-        ManagersDAO dao = new ManagersDAO(new ConnectionFacilitator());
-
         while (isRunning)
         {
             Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Add Employee to database\n4)Add Animal to database\nType 'exit' to exit program");
@@ -27,7 +25,7 @@ public class Program
             switch (menuChoice.ToLower())
             {
                 case "1":
-                    managers = GetStoreManagers(dao);//Fetch & store managers records in list
+                    managers = GetStoreManagers(new ManagersDAO(connect));//Fetch & store managers records in list
 
                     if (managers.Count == 0)
                     {
@@ -41,6 +39,16 @@ public class Program
 
                 case "2":
                     //TODO:Call method for corresponding action
+                    animals = GetStoreAnimals(new AnimalsDAO(connect));
+
+                    if (animals.Count == 0) 
+                    {
+                        Console.WriteLine("No animals available!");
+                    }
+                    else
+                    {
+                        animals.ForEach(a => Console.WriteLine(a));
+                    }
                     break;
 
                 case "3":
