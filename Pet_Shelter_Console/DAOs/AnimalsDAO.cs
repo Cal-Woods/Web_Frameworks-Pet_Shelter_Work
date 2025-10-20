@@ -52,5 +52,45 @@ namespace DAOs
 
             return animalList;
         }
+
+        public Animal getAnimalById(string id)
+        {
+            //Validation
+            ArgumentNullException.ThrowIfNull(id, id);
+            if (connection.Connection.State != ConnectionState.Open)
+            {
+                return new Animal();
+            }
+
+            Animal animal = null;
+
+            try
+            {
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE animalId = @id;", connection.Connection);
+                comm.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    MySqlDataReader data = comm.ExecuteReader();
+
+                    if (data.Read())
+                    {
+                        animal = new Animal(data[0].ToString(), data[1].ToString(), Int32.Parse(data[2].ToString()), Double.Parse(data[3].ToString()), Double.Parse(data[4].ToString()), data[5].ToString()[0], data[6].ToString());
+                    }
+
+                    data.Close();
+                }
+                catch (MySqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return animal;
+        }
     }
 }
