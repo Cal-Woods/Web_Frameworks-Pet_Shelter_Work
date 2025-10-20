@@ -99,4 +99,17 @@ public class Program
 
         return managers;
     }
+
+    private static List<Animal> GetStoreAnimals(AnimalsDAO dao) 
+    {
+        if (dao == null) 
+        {
+            Console.WriteLine("Cannot reach database at the moment. Try again later.");
+            return new List<Animal>();
+        }
+
+        List<Animal> animals = dao.GetAllAnimals();
+
+        return animals;
+    }
 }
