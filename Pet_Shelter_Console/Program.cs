@@ -68,6 +68,7 @@ public class Program
             }
         }
 
+        connect.CloseConnection();
         return;
     }
 
