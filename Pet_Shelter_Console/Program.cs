@@ -67,7 +67,8 @@ public class Program
     {
         if (managersDb == null)
         {
-            throw new ArgumentNullException("Given ManagersDAO object was null, please check passed parameter.");
+            Console.WriteLine("Given ManagersDAO object was null, please check passed parameter.");
+            return new List<Manager>();
         }
 
         if (managers.Count == 0)
