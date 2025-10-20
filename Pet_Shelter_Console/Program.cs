@@ -8,8 +8,11 @@ using System.Data;
 public class Program
 {
     static List<Manager> managers = new List<Manager>();
+    static List<Animal> animals = new List<Animal>();
     public static void Main(string[] args)
     {
+        ConnectionFacilitator connect = new ConnectionFacilitator();
+
         Console.WriteLine("This is an application for a pet shelter management system! This system will allow managers to enter new animal records into system\nFor vets to be able to view these records.\nFosterers will be able to view animals that need a home and filter search results.");
 
         bool isRunning = true;
