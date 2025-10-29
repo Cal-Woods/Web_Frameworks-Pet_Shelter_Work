@@ -101,7 +101,7 @@ namespace DAOs
             int result = -1;
             try
             {
-                MySqlCommand comm = new MySqlCommand("INSERT INTO animals VALUES(@t1, @t2, @t3, @t4, @t5, @t6, @t7)");
+                MySqlCommand comm = new MySqlCommand("INSERT INTO animals VALUES(@t1, @t2, @t3, @t4, @t5, @t6, @t7)", connection.Connection);
                 comm.Parameters.AddWithValue("@t1", animal.AnimalId);
                 comm.Parameters.AddWithValue("@t2", animal.Name);
                 comm.Parameters.AddWithValue("@t3", animal.Age);
@@ -114,7 +114,7 @@ namespace DAOs
                 {
                     result = comm.ExecuteNonQuery();
                 }
-                catch (MySqlException e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
