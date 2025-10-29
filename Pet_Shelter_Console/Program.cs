@@ -17,6 +17,8 @@ public class Program
 
         const string SENTINEL = "exit";
 
+        AnimalsDAO dAO = new AnimalsDAO(connect);
+
         while (isRunning)
         {
             Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Add Employee to database\n4)Add Animal to database\nType 'exit' to exit program");
@@ -52,9 +54,6 @@ public class Program
                     break;
 
                 case "3":
-                    //TODO:Call method for corresponding action
-                    AnimalsDAO dAO = new AnimalsDAO(connect);
-
                     Console.Write("Enter animal id: ");
                     Animal a = dAO.GetAnimalById(Console.ReadLine());
 
