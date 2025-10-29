@@ -67,7 +67,16 @@ public class Program
                     break;
 
                 case "4":
-                    //TODO:Call method for corresponding action
+                    bool inserted = InsertAnimal(dAO);
+
+                    if(inserted == true)
+                    {
+                        Console.WriteLine("Animal record inserted successfully!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("There was a problem inserting animal record into database. Check for duplicate id or invalid species!");
+                    }
                     break;
 
                 case SENTINEL: //Stop while loop if SENTINEL value is typed
@@ -132,5 +141,54 @@ public class Program
         List<Animal> animals = dao.GetAllAnimals();
 
         return animals;
+    }
+
+    private static Animal GetAnimalById(AnimalsDAO dao, string id)
+    {
+        ArgumentNullException.ThrowIfNull(dao, "dao");
+        ArgumentNullException.ThrowIfNullOrWhiteSpace(id, "id");
+
+        if(Int32.Parse(id) < 0)
+        {
+            Console.WriteLine($"Invalid, given id was {id}, cannot be less than 0.");
+        }
+
+        Animal animal = dao.GetAnimalById(id);
+
+        return animal;
+    }
+    private static bool InsertAnimal(AnimalsDAO dao)
+    {
+        ArgumentNullException.ThrowIfNull(dao, "dao");
+
+        string[] animalInfo = new string[7];
+
+        Console.WriteLine("Please fill out animal information to insert animal record into system:");
+
+        Console.Write("Enter an id for animal(Will fail if id already exists): ");
+        animalInfo[0] = Console.ReadLine();
+
+        Console.Write("Enter animals name: ");
+        animalInfo[1] = Console.ReadLine();
+
+        Console.Write("Enter animals age: ");
+        animalInfo[2] = Console.ReadLine();
+
+        Console.Write("Enter animal's height: ");
+        animalInfo[3] = Console.ReadLine();
+
+        Console.Write("Enter animal's width: ");
+        animalInfo[4] = Console.ReadLine();
+
+        Console.Write("Enter animal's sex(m, f): ");
+        animalInfo[5] = Console.ReadLine();
+
+        Console.Write("Enter animal's species(Must be a valid species in database): ");
+        animalInfo[6] = Console.ReadLine();
+
+        Animal animal = new Animal(animalInfo[0], animalInfo[1], Int32.Parse(animalInfo[2]), Double.Parse(animalInfo[3]), Double.Parse(animalInfo[4]), animalInfo[5][0], animalInfo[6]);
+        bool result = dao.InsertAnimal(animal);
+
+        return result;
     }
 }
