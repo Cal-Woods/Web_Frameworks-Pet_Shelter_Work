@@ -1,13 +1,14 @@
 ﻿using Entities;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace DAOs
 {
     public class AnimalsDAO : IDAO
     {
         public ConnectionFacilitator connection { get; private set; }
-        public AnimalsDAO(ConnectionFacilitator connectionFacilitator) 
+        public AnimalsDAO(ConnectionFacilitator connectionFacilitator)
         {
             ArgumentNullException.ThrowIfNull(connectionFacilitator, "connectionFacilitator");
 
@@ -91,6 +92,39 @@ namespace DAOs
             }
 
             return animal;
+        }
+
+        public bool InsertAnimal(Animal animal)
+        {
+            ArgumentNullException.ThrowIfNull(animal, "animal");
+
+            int result = -1;
+            try
+            {
+                MySqlCommand comm = new MySqlCommand("INSERT INTO animals VALUES(@t1, @t2, @t3, @t4, @t5, @t6, @t7)");
+                comm.Parameters.AddWithValue("@t1", animal.AnimalId);
+                comm.Parameters.AddWithValue("@t2", animal.Name);
+                comm.Parameters.AddWithValue("@t3", animal.Age);
+                comm.Parameters.AddWithValue("@t4", animal.Height);
+                comm.Parameters.AddWithValue("@t5", animal.Width);
+                comm.Parameters.AddWithValue("@t6", animal.Sex);
+                comm.Parameters.AddWithValue("@t7", animal.Species);
+
+                try
+                {
+                    result = comm.ExecuteNonQuery();
+                }
+                catch (MySqlException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result > 0;
         }
     }
 }
