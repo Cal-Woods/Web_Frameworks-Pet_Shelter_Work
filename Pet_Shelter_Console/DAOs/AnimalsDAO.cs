@@ -53,7 +53,7 @@ namespace DAOs
             return animalList;
         }
 
-        public Animal getAnimalById(string id)
+        public Animal GetAnimalById(string id)
         {
             //Validation
             ArgumentNullException.ThrowIfNull(id, id);

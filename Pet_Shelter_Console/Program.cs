@@ -53,6 +53,18 @@ public class Program
 
                 case "3":
                     //TODO:Call method for corresponding action
+                    AnimalsDAO dAO = new AnimalsDAO(connect);
+
+                    Console.Write("Enter animal id: ");
+                    Animal a = dAO.GetAnimalById(Console.ReadLine());
+
+                    if (a == null) 
+                    {
+                        Console.WriteLine("There is no entry with that id.");
+                        break;
+                    }
+
+                    Console.WriteLine("Found match!\n\n"+a);
                     break;
 
                 case "4":
