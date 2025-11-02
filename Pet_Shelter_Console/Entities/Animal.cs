@@ -51,12 +51,12 @@ namespace Entities
         public string VaccinationStatus
         {
             get { return vaccinationStatus; }
-            set => Boolean.Parse(value).ToString();
+            set { vaccinationStatus = value; }
         }
         public string IsAdopted
         {
             get { return isAdopted; }
-            set => Boolean.Parse(value).ToString();
+            set { isAdopted = value; }
         }
 
         /// <summary>
@@ -94,8 +94,8 @@ namespace Entities
             Width = width;
             Sex = sex;
             Species = species.ToUpper();
-            VaccinationStatus = Boolean.Parse(vaccinationStatus).ToString();
-            IsAdopted = Boolean.Parse(isAdopted).ToString();
+            VaccinationStatus = vaccinationStatus;
+            IsAdopted = isAdopted;
         }
 
         public override string ToString() {
