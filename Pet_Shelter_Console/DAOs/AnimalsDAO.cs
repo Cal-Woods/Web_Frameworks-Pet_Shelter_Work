@@ -116,7 +116,7 @@ namespace DAOs
                 {
                     result = comm.ExecuteNonQuery();
                 }
-                catch (Exception e)
+                catch (MySqlException e)
                 {
                     Console.WriteLine(e.Message);
                 }
@@ -141,7 +141,7 @@ namespace DAOs
 
             try
             {
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `Vaccination Status` = @t1", connection.Connection);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `vaccination_status` = @t1", connection.Connection);
                 comm.Parameters.AddWithValue("@t1", isVaccinated.ToString());
 
                 try

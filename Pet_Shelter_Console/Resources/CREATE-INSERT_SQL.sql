@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `animals`(
   width DECIMAL(4,2),
   sex CHAR(1),
   species VARCHAR(255),
+  vaccinationStatus VARCHAR(255),
+  isAdopted VARCHAR(255),
   CONSTRAINT fk_species
   FOREIGN KEY(species) REFERENCES species(name)
 );
