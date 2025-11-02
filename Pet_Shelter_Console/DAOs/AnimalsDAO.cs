@@ -94,6 +94,11 @@ namespace DAOs
             return animal;
         }
 
+        /// <summary>
+        /// Inserts an animal record into MySQL database
+        /// </summary>
+        /// <param name="animal">Given Animal object</param>
+        /// <returns>True if successful.</returns>
         public bool InsertAnimal(Animal animal)
         {
             ArgumentNullException.ThrowIfNull(animal, "animal");
