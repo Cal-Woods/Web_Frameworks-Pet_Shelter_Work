@@ -11,7 +11,8 @@ namespace Entities
         private double width;
         private char sex;
         private Species species;
-
+        private string vaccinationStatus;
+        private string isAdopted;
         public string AnimalId
         {
             get { return animalId; }
@@ -45,7 +46,17 @@ namespace Entities
         public string Species
         {
             get { return species.ToString(); }
-            set { species = Enum.Parse<Species>(value); }//TODO: Change to lambda expression that checks value matches Species Enums.
+            set { species = Enum.Parse<Species>(value); }
+        }
+        public string VaccinationStatus
+        {
+            get { return vaccinationStatus; }
+            set => Boolean.Parse(value).ToString();
+        }
+        public string IsAdopted
+        {
+            get { return isAdopted; }
+            set => Boolean.Parse(value).ToString();
         }
 
         /// <summary>
@@ -60,6 +71,8 @@ namespace Entities
             Width = -1;
             Sex = 'U';
             Species = "Dog".ToUpper();
+            VaccinationStatus = "true";
+            IsAdopted = "false";
         }
         /// <summary>
         /// A parameterised constructor to set each Animal attribute to given values.
@@ -69,7 +82,10 @@ namespace Entities
         /// <param name="height">Given height</param>
         /// <param name="width">Given width</param>
         /// <param name="sex">Given sex {'m','f'}</param>
-        public Animal(string animalId, string name, int age, double height, double width, char sex, string species)
+        /// <param name="vaccinationStatus">Given vaccination status{'true','false'}</param>
+        /// <param name="isAdopted">Given adoption status{'true', 'false'}</param>
+        /// <remarks>Certain values like <paramref name="species">species</paramref>, <paramref name="vaccinationStatus">vaccinationStatus</paramref> and <paramref name="isAdopted">isAdopted</paramref> must take valid values specified in documentation</remarks>
+        public Animal(string animalId, string name, int age, double height, double width, char sex, string species, string vaccinationStatus, string isAdopted)
         {
             AnimalId = animalId;
             Name = name;
@@ -78,10 +94,12 @@ namespace Entities
             Width = width;
             Sex = sex;
             Species = species.ToUpper();
+            VaccinationStatus = Boolean.Parse(vaccinationStatus).ToString();
+            IsAdopted = Boolean.Parse(isAdopted).ToString();
         }
 
         public override string ToString() {
-            return $"Animal id: {AnimalId}\nName: {Name}\nAge: {Age}\nWidth: {Width}\nHeight: {Height}\nSex: {Sex}";
+            return $"Animal id: {AnimalId}\nName: {Name}\nAge: {Age}\nWidth: {Width}\nHeight: {Height}\nSex: {Sex}\nVaccination status: {VaccinationStatus}\n";
         }
     }
 }

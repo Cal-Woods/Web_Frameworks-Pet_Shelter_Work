@@ -24,7 +24,26 @@ public class Program
             Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Add Employee to database\n4)Add Animal to database\nType 'exit' to exit program");
             menuChoice = Console.ReadLine();
 
-            switch (menuChoice.ToLower())
+            switch (
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                menuChoice.ToLower())
             {
                 case "1":
                     managers = GetStoreManagers(new ManagersDAO(connect));//Fetch & store managers records in list
@@ -161,7 +180,7 @@ public class Program
     {
         ArgumentNullException.ThrowIfNull(dao, "dao");
 
-        string[] animalInfo = new string[7];
+        string[] animalInfo = new string[9];
 
         Console.WriteLine("Please fill out animal information to insert animal record into system:");
 
@@ -186,7 +205,13 @@ public class Program
         Console.Write("Enter animal's species(Must be a valid species in database): ");
         animalInfo[6] = Console.ReadLine();
 
-        Animal animal = new Animal(animalInfo[0], animalInfo[1], Int32.Parse(animalInfo[2]), Double.Parse(animalInfo[3]), Double.Parse(animalInfo[4]), animalInfo[5][0], animalInfo[6]);
+        Console.Write("Enter animal's vaccination status('', ''): ");
+        animalInfo[7] = Console.ReadLine();
+
+        Console.Write("Enter animal's adopted status('true', 'false'): ");
+        animalInfo[8] = Console.ReadLine();
+
+        Animal animal = new Animal(animalInfo[0], animalInfo[1], Int32.Parse(animalInfo[2]), Double.Parse(animalInfo[3]), Double.Parse(animalInfo[4]), animalInfo[5][0], animalInfo[6], animalInfo[7], animalInfo[8]);
         bool result = dao.InsertAnimal(animal);
 
         return result;
