@@ -142,6 +142,7 @@ namespace DAOs
             try
             {
                 MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `Vaccination Status` = @t1", connection.Connection);
+                comm.Parameters.AddWithValue("@t1", isVaccinated.ToString());
 
                 try
                 {
@@ -154,11 +155,11 @@ namespace DAOs
                         animals.Add(new Animal(data[0].ToString(), data[1].ToString(), Int32.Parse(data[2].ToString()), Double.Parse(data[3].ToString()), Double.Parse(data[4].ToString()), data[5].ToString()[0], data[6].ToString(), data[7].ToString(), data[8].ToString()));
                     }
 
-                    
+                    data.Close();
                 }
                 catch (MySqlException ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    Console.WriteLine("inner"+ex.Message);
                 }
             }
             catch (MySqlException e) 
