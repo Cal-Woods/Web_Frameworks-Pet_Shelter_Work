@@ -141,7 +141,7 @@ namespace DAOs
 
             try
             {
-                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `vaccination_status` = @t1", connection.Connection);
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `vaccinationStatus` = @t1", connection.Connection);
                 comm.Parameters.AddWithValue("@t1", isVaccinated.ToString());
 
                 try
