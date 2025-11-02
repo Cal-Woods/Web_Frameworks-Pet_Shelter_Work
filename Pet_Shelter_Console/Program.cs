@@ -21,29 +21,10 @@ public class Program
 
         while (isRunning)
         {
-            Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Add Employee to database\n4)Add Animal to database\nType 'exit' to exit program");
+            Console.WriteLine("\nPlease choose from the following options by typing a number:\n1) View all Employee records\n2) View All Animal records\n3) Get animal by id\n4) Add Animal to database\n5) Get all animals with given vaccination status\nType 'exit' to exit program");
             menuChoice = Console.ReadLine();
 
-            switch (
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                menuChoice.ToLower())
+            switch (menuChoice.ToLower())
             {
                 case "1":
                     managers = GetStoreManagers(new ManagersDAO(connect));//Fetch & store managers records in list
@@ -59,7 +40,6 @@ public class Program
                     break;
 
                 case "2":
-                    //TODO:Call method for corresponding action
                     animals = GetStoreAnimals(new AnimalsDAO(connect));
 
                     if (animals.Count == 0) 
@@ -97,7 +77,9 @@ public class Program
                         Console.WriteLine("There was a problem inserting animal record into database. Check for duplicate id or invalid species!");
                     }
                     break;
-
+                case "5":
+                    animals = GetAnimalsByVaccinationStatus(dAO);
+                    break;
                 case SENTINEL: //Stop while loop if SENTINEL value is typed
                     isRunning = false; //End loop to exit program
                     break;
@@ -215,5 +197,32 @@ public class Program
         bool result = dao.InsertAnimal(animal);
 
         return result;
+    }
+
+    private static List<Animal> GetAnimalsByVaccinationStatus(AnimalsDAO dao)
+    {
+        if (dao == null)
+        {
+            Console.WriteLine("Cannot reach database at the moment. Try again later.");
+            return new List<Animal>();
+        }
+
+        List<Animal> animals = null;
+
+        Console.WriteLine("Enter desired vaccination status {'t'(true), 'f'(false)}:");
+        char answer = (char)Console.Read();
+
+        if (answer == 't')
+        {
+            animals = dao.GetAnimalsByVaccinationStatus(true);
+        }
+        else
+        {
+            animals = dao.GetAnimalsByVaccinationStatus(false);
+        }
+
+        Console.WriteLine("Done.");
+
+        return animals;
     }
 }
