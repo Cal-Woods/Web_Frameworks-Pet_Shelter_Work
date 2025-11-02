@@ -109,8 +109,8 @@ namespace DAOs
                 comm.Parameters.AddWithValue("@t5", animal.Width);
                 comm.Parameters.AddWithValue("@t6", animal.Sex);
                 comm.Parameters.AddWithValue("@t7", animal.Species);
-                comm.Parameters.AddWithValue("@t8", animal.VaccinationStatus);
-                comm.Parameters.AddWithValue("@t9", animal.IsAdopted);
+                comm.Parameters.AddWithValue("@t8", Boolean.Parse(animal.VaccinationStatus));
+                comm.Parameters.AddWithValue("@t9", Boolean.Parse(animal.IsAdopted));
 
                 try
                 {
