@@ -79,6 +79,8 @@ public class Program
                     break;
                 case "5":
                     animals = GetAnimalsByVaccinationStatus(dAO);
+
+                    Console.WriteLine(animals != null ? "Listing animals..." : "There were no animals found.");
                     break;
                 case SENTINEL: //Stop while loop if SENTINEL value is typed
                     isRunning = false; //End loop to exit program
@@ -223,6 +225,7 @@ public class Program
 
         Console.WriteLine("Done.");
 
+        Console.ReadLine();//Clear stdin buffer
         return animals;
     }
 }
