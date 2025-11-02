@@ -128,5 +128,45 @@ namespace DAOs
 
             return result > 0;
         }
+
+        /// <summary>
+        /// A method to connect to MySQL database and retrieve all animal records by 
+        /// their vaccination status.
+        /// </summary>
+        /// <param name="isVaccinated">Specifies true or false value to use when retrieving records</param>
+        /// <returns>List of Animal objects</returns>
+        public List<Animal> GetAnimalsByVaccinationStatus(bool isVaccinated)
+        {
+            List<Animal> animals = null;
+
+            try
+            {
+                MySqlCommand comm = new MySqlCommand("SELECT * FROM animals WHERE `Vaccination Status` = @t1", connection.Connection);
+
+                try
+                {
+                    MySqlDataReader data = comm.ExecuteReader();
+
+                    animals = new List<Animal>();
+
+                    while (data.Read())
+                    {
+                        animals.Add(new Animal(data[0].ToString(), data[1].ToString(), Int32.Parse(data[2].ToString()), Double.Parse(data[3].ToString()), Double.Parse(data[4].ToString()), data[5].ToString()[0], data[6].ToString(), data[7].ToString(), data[8].ToString()));
+                    }
+
+                    
+                }
+                catch (MySqlException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            catch (MySqlException e) 
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return animals;
+        }
     }
 }
