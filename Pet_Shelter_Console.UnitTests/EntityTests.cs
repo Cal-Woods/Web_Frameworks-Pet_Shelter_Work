@@ -28,7 +28,7 @@ namespace Pet_Shelter_Console.UnitTests
         {
             Manager manager = new Manager("first_managerAllArgs_test", "Dalton Reynolds", 45000.55, "Manager", "Drogheda, Co Louth, Ireland");
 
-            Assert.AreEqual(manager.EmployeeId, "first_test");
+            Assert.AreEqual(manager.EmployeeId, "first_managerAllArgs_test");
             Assert.AreEqual(manager.Name, "Dalton Reynolds");
             Assert.AreEqual(manager.Salary, 45000.55);
             Assert.AreEqual(manager.EmployeeType, "Manager");
